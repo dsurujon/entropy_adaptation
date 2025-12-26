@@ -10,3 +10,16 @@ antibiotic adaptation in Streptococcus pneumoniae"
   
 ### Non-python dependencies: 
 Refer to `nonpython_install.sh`
+
+## Steps to recreate the analysis
+1. Download relevant fastq files for the RNAseq experiments
+2. Download reference    
+   `datasets download genome accession GCF_040687945.1`
+3. Run alignments against the reference genome 
+4. Call variants    
+   `bash variant_calling_abx_adapt.sh`    
+   This script will turn bam files into vcf, extract variants in each sample (3 wildtype, 3 adapted), and take the difference between adapted - wildtype to get to a list of mutations uniquely seen in the adapted strain. 
+5. Annotate variants - add the names of the genes from the reference
+   `bash annotate_adapt_vcf.sh`
+6. Post processing on jupyter notebooks: 
+   1. 

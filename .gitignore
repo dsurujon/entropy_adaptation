@@ -1,0 +1,8 @@
+*.sam
+*.bam
+*.bai
+*.fastq
+*.fasta
+demos/data/*.csv
+demos/data/vars/*
+refs/*
