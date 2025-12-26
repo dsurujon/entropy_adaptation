@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "entropy"
+version = "0.1.0"
+description = "entropy followup analysis"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pysam = "^0.23.3"
+jupyter = "^1.1.1"
+seaborn = "^0.13.2"
+statsmodels = "^0.14.5"
+biopython = "^1.86"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
