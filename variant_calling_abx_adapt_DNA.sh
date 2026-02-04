@@ -2,7 +2,7 @@
 set -euo pipefail
 
 REF="refs/GCF_040687945.1_ASM4068794v1_genomic.fna"
-ALN_DIR="aln"
+ALN_DIR="demos/data/aln"
 ABX="PEN_DNA"
 OUT_DIR="demos/data/vars/variant_calling_${ABX}"
 
@@ -30,7 +30,7 @@ ADAPT_SAMPLES=(
 
 call_variants () {
   SAMPLE=$1
-  BAM="${ALN_DIR}/${SAMPLE}.bam"
+  BAM="${ALN_DIR}/${SAMPLE}.sorted.bam"
   PREFIX="${OUT_DIR}/${SAMPLE}"
 
   echo "Processing ${SAMPLE}"

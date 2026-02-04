@@ -21,10 +21,11 @@ Refer to `nonpython_install.sh`
 1. Download reference     
    `datasets download genome accession GCF_040687945.1`
 2. Download fastqs and run alignments against the reference genome     
-    `download_and_align_fastq.sh`
+    `download_and_align_fastq.sh`    
+    This will go through all TIGR4 experiments
 3. Call variants     
    `bash variant_calling_abx_adapt.sh`     
-   This script will turn bam files into vcf, extract variants in each sample (3 wildtype, 3 adapted), and take the difference between adapted - wildtype to get to a list of mutations uniquely seen in the adapted strain. 
+   This script will turn bam files into vcf, extract variants in each sample (3 wildtype, 3 adapted), and take the difference between adapted - wildtype to get to a list of mutations uniquely seen in the adapted strain. I ran this script once for each antibiotic adaptation experiment, changing the sample names in between runs.     
 4. Annotate variants - add the names of the genes from the reference    
    `bash annotate_adapt_vcf.sh`
 5. Post processing on jupyter notebooks under `demos`    
@@ -32,7 +33,7 @@ Refer to `nonpython_install.sh`
    2. `Coverage_summary`: Generate coverage plot for Figure 1, Table 2 (allele depths)
 
 ### Variant calling from DNA-seq data
-From the computational standpoint, this should look similar to the RNA-seq pipeline. We will use the data published in [Nishimoto et al](https://www.cell.com/cell-reports/fulltext/S2211-1247(22)01727-2) for the TIGR4 Penicillin adapted populations. Here we use slightly adapted versions of the scripts in the RNAseq analysis where the samples have been swapped out for the DNA-seq input: 
+From the computational standpoint, this should look similar to the RNA-seq pipeline. We will use the data published in [Nishimoto et al](https://www.cell.com/cell-reports/fulltext/S2211-1247(22)01727-2) for the TIGR4 Penicillin adapted populations (accession: PRJNA737504). Here we use slightly adapted versions of the scripts in the RNAseq analysis where the samples have been swapped out for the DNA-seq input: 
 - `download_and_align_fastq_DNA.sh`
 - `variant_calling_abx_adapt_DNA.sh`
 - `annotate_adapt_vcf.sh`
