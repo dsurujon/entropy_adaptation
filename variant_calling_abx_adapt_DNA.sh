@@ -14,8 +14,8 @@ mkdir -p "$OUT_DIR"
 
 WT_SAMPLES=(
   "T4-P1-D32"
-  "T4-P2-D32"
   "T4-P3-D32"
+  "T4-P4-D32"
 )
 
 ADAPT_SAMPLES=(
