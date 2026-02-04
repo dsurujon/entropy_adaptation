@@ -32,7 +32,10 @@ Refer to `nonpython_install.sh`
    2. `Coverage_summary`: Generate coverage plot for Figure 1, Table 2 (allele depths)
 
 ### Variant calling from DNA-seq data
-From the computational standpoint, this should look similar to the RNA-seq pipeline. We will use the data published in [Nishimoto et al](https://www.cell.com/cell-reports/fulltext/S2211-1247(22)01727-2) for the TIGR4 Penicillin adapted populations. 
+From the computational standpoint, this should look similar to the RNA-seq pipeline. We will use the data published in [Nishimoto et al](https://www.cell.com/cell-reports/fulltext/S2211-1247(22)01727-2) for the TIGR4 Penicillin adapted populations. Here we use slightly adapted versions of the scripts in the RNAseq analysis where the samples have been swapped out for the DNA-seq input: 
+- `download_and_align_fastq_DNA.sh`
+- `variant_calling_abx_adapt_DNA.sh`
+- `annotate_adapt_vcf.sh`
 
 
 # Results
