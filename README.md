@@ -1,7 +1,12 @@
 # Adaptation analysis on the entropy dataset 
 
 This repo contains code used in the manuscript "RNA-seq reanalysis identifies murE as a convergent target of 
-antibiotic adaptation in Streptococcus pneumoniae"    
+antibiotic adaptation in Streptococcus pneumoniae"      
+The main goal in this project is to see if we can reliably perform variant calling from RNA-seq data. While whole genome sequencing would be the ideal input for variant calling, the data that is already published and publicly accessible is unfortunately RNA-seq. Some disadvantages of RNA-seq data for this purpose are: 
+- incomplete coverage: we will only get portions of the genome that are expressed, so intergenic regions are unfortunately not going to be well represented in the RNAseq data
+- uneven coverage: we need a region to have high enough expression to be able to get sufficient depth for confident variant calling. We might not have enough depth on genes that are not expressed highly 
+- extra step of reverse transcription: I'm not sure how much of an effect this has but there's risk of introducing an error at the RNA --> cDNA step in the prep that may appear as a mutation    
+So in order to address the potential shortcomings of RNA-seq data, we will also make a comparison of variant calling with the "right" tool, DNA-seq data
 
 ### Environment management
 * Use [poetry](https://python-poetry.org/docs/basic-usage/)
@@ -12,6 +17,7 @@ antibiotic adaptation in Streptococcus pneumoniae"
 Refer to `nonpython_install.sh`
 
 ## Steps to recreate the analysis
+### Variant calling from RNA-seq data
 1. Download reference     
    `datasets download genome accession GCF_040687945.1`
 2. Download fastqs and run alignments against the reference genome     
@@ -24,6 +30,9 @@ Refer to `nonpython_install.sh`
 5. Post processing on jupyter notebooks under `demos`    
    1. `Adaptive_mutations`: Generate Table 1 (list of all mutations)
    2. `Coverage_summary`: Generate coverage plot for Figure 1, Table 2 (allele depths)
+
+### Variant calling from DNA-seq data
+From the computational standpoint, this should look similar to the RNA-seq pipeline. We will use the data published in [Nishimoto et al](https://www.cell.com/cell-reports/fulltext/S2211-1247(22)01727-2) for the TIGR4 Penicillin adapted populations. 
 
 
 # Results
