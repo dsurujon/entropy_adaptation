@@ -33,10 +33,9 @@ Refer to `nonpython_install.sh`
    2. `Coverage_summary`: Generate coverage plot for Figure 1, Table 2 (allele depths)
 
 ### Variant calling from DNA-seq data
-From the computational standpoint, this should look similar to the RNA-seq pipeline. We will use the data published in [Nishimoto et al](https://www.cell.com/cell-reports/fulltext/S2211-1247(22)01727-2) for the TIGR4 Penicillin adapted populations (accession: PRJNA737504). Here we use slightly adapted versions of the scripts in the RNAseq analysis where the samples have been swapped out for the DNA-seq input: 
-- `download_and_align_fastq_DNA.sh`
-- `variant_calling_abx_adapt_DNA.sh`
-- `annotate_adapt_vcf.sh`
+From the computational standpoint, this should look similar to the RNA-seq pipeline. We will use the data published in [Nishimoto et al](https://www.cell.com/cell-reports/fulltext/S2211-1247(22)01727-2) for the TIGR4 Penicillin adapted populations (accession: PRJNA856279 - note that the accession number noted in the paper is a different one for the other sequencing experiments). Here we use a slightly adapted version of the scripts in the RNAseq analysis where the samples have been swapped out for the DNA-seq input: 
+- `variant_calling_DNA.sh`    
+This script will handle data download for Penicillin adapted and SDMM(no-antibiotic)-adapted populations, align to the same reference as before, call variants and generate VCF files, merge the antibiotic adapted and no-antibiotic adapted variant files and take the difference. It will also add in the gene annotations to the final table of variants unique to the Penicillin adapted populations. From the annotations, we see that there are 6 mutations across the 4 PEN-adapted populations (murE, cps4E, pbp2x, ABC806_RS00205, ABC806_RS04600 and ABC806_RS04990), all of which overlap with the mutations found in the PEN-adapted clone in the RNA-seq data. This validates the RNA-seq approach, and demonstrates that the clone used in the RNA-seq experiment was NOT some oddball, low frequency genotype in the population, but rather it was representative of the population. 
 
 
 # Results
