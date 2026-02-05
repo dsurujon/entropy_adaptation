@@ -12,13 +12,13 @@ mkdir -p "$OUT_DIR"
 # Define samples here
 # -----------------------------
 
-WT_SAMPLES=(
+ADAPT_SAMPLES=(
   "T4-P1-D32"
   "T4-P3-D32"
   "T4-P4-D32"
 )
 
-ADAPT_SAMPLES=(
+WT_SAMPLES=(
   "T4-N1-D32"
   "T4-N2-D32"
   "T4-N3-D32"
