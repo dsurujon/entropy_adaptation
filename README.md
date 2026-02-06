@@ -35,14 +35,12 @@ Refer to `nonpython_install.sh`
 ### Variant calling from DNA-seq data
 From the computational standpoint, this should look similar to the RNA-seq pipeline. We will use the data published in [Nishimoto et al](https://www.cell.com/cell-reports/fulltext/S2211-1247(22)01727-2) for the TIGR4 Penicillin adapted populations (accession: PRJNA856279 - note that the accession number noted in the paper is a different one for the other sequencing experiments). Here we use a slightly adapted version of the scripts in the RNAseq analysis where the samples have been swapped out for the DNA-seq input: 
 - `variant_calling_DNA.sh`    
-This script will handle data download for Penicillin adapted and SDMM(no-antibiotic)-adapted populations, align to the same reference as before, call variants and generate VCF files, merge the antibiotic adapted and no-antibiotic adapted variant files and take the difference. It will also add in the gene annotations to the final table of variants unique to the Penicillin adapted populations. From the annotations, we see that there are 6 mutations across the 4 PEN-adapted populations (murE, cps4E, pbp2x, ABC806_RS00205, ABC806_RS04600 and ABC806_RS04990), all of which overlap with the mutations found in the PEN-adapted clone in the RNA-seq data. There were two additional genic mutations found in the RNAseq data - one was on upp, which only appears in one replicate and at lower frequency (~70%), and the other was filtered out from the DNAseq results because it was present in at least one SDMM population. Below are the alternative allele plots for the DNA and RNA seq results for Penicillin (only genic mutations shown). The nice overlap validates the RNA-seq approach, and demonstrates that the clone used in the RNA-seq experiment was NOT some oddball, low frequency genotype in the population, but rather it was representative of the population. 
-
-![DNA-PEN-mutations](demos/data/figures/PEN_mutations_DNAseq.png)    
-![RNA-PEN-mutations](demos/data/figures/PEN_mutations_RNAseq.png)    
-
+This script will handle data download for Penicillin adapted and SDMM(no-antibiotic)-adapted populations at Day 32, align to the same reference as before, call variants and generate VCF files, merge the antibiotic adapted and no-antibiotic adapted variant files and take the difference. It will also add in the gene annotations to the final table of variants unique to the Penicillin adapted populations.     
+I was also interested in the earlier timepoints of the PEN-evolution experiment, since they were available in the same bioproject; Days 7, 14, 21. The script `variant_calling_DNA_earlier_timepoints.sh` loops through the earlier timepoints, downloads fastq's, aligns and calls variants for each sample. At this point, the aggregation step was not strictly necessary, so the script keeps each independent population/sample, but does subtract mutations found in the SDMM adapted strains. 
+    
 
 # Results
-
+## RNA-Seq based variant calling
 Below is a representative subset of annotated mutations identified in coding regions:
 | position | Ref | Alt   | gene | AA change | ABX | Notes              |
 |----------|-----|-------|------|-----|-----|--------------------|
@@ -84,7 +82,15 @@ Additionally, several mutations occur in genes associated with regulation, stres
 
 A recurrent mutation at coordinate 713637 affecting ABC806_RS03775 (annotated as UDP-N-acetylmuramoyl-L-alanyl-D-glutamate–L-lysine ligase, a MurE homolog) appears independently in CIP, PEN, and KAN adapted strains. MurE catalyzes an essential step in peptidoglycan precursor synthesis, and its repeated targeting across distinct antibiotics suggests a convergent adaptive adjustment of cell wall biosynthetic flux under heterogeneous antibiotic stress.     
 
-### Genes with interesting mutations
+## DNA-seq based variant calling
+From the annotations, we see that there are 6 mutations across the 4 PEN-adapted populations (murE, cps4E, pbp2x, ABC806_RS00205, ABC806_RS04600 and ABC806_RS04990), all of which overlap with the mutations found in the PEN-adapted clone in the RNA-seq data. There were two additional genic mutations found in the RNAseq data - one was on upp, which only appears in one replicate and at lower frequency (~70%), and the other was filtered out from the DNAseq results because it was present in at least one SDMM population. Below are the alternative allele plots for the DNA and RNA seq results for Penicillin (only genic mutations shown). The nice overlap validates the RNA-seq approach, and demonstrates that the clone used in the RNA-seq experiment was NOT some oddball, low frequency genotype in the population, but rather it was representative of the population. 
+
+![DNA-PEN-mutations](demos/data/figures/PEN_mutations_DNAseq.png)    
+![RNA-PEN-mutations](demos/data/figures/PEN_mutations_RNAseq.png)    
+
+
+
+## Genes with interesting mutations
 #### murE
 Function: MurE is the UDP-MurNAc-tripeptide–L-lysine ligase that adds L-lysine to the peptidoglycan stem peptide, a central step in cell wall biosynthesis.
 Adaptation relevance: Altered flux through peptidoglycan synthesis can mitigate imbalances between cell growth and envelope assembly under stress 

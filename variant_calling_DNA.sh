@@ -140,6 +140,20 @@ bcftools index -f "${OUT_DIR}/ADAPT_merged.vcf.gz"
 
 
 # -----------------------------
+# Subtract WT from adapted
+# -----------------------------
+
+bcftools isec \
+  -C \
+  "${OUT_DIR}/ADAPT_merged.vcf.gz" \
+  "${OUT_DIR}/WT_merged.vcf.gz" \
+  -p "${OUT_DIR}/adapted_unique"
+
+echo "Done. Final variants:"
+echo "${OUT_DIR}/adapted_unique/0000.vcf"
+
+
+# -----------------------------
 # Annotate adapted variants
 # -----------------------------
 
