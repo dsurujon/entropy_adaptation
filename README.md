@@ -66,8 +66,7 @@ Below is a representative subset of annotated mutations identified in coding reg
 | 295433  | C   | G   | rpoB |I532M| RIF | direct target   | 
 | 295258  | T   | G   | ssrA |L116L| VNC | transfer mRNA   | 
 | 1832036  | G   | A   | cps4E |S106F| VNC | capsule metabolism   | 
-| 2026741  | G   | T,A   | tsaD |A65E, A65V| VNC | tRNA modification   | 
-
+| 2026741  | G   | T,A   | tsaD |A65E, A65V| VNC | tRNA modification   |    
 
 This is not a complete list. Please see the jupyter notebook for the comprehensive list of mutations.     
 Across the adaptive evolution experiments, we observe that mutations in the direct targets of the antibiotics arise as expected, including:
@@ -83,6 +82,15 @@ Additionally, several mutations occur in genes associated with regulation, stres
 - tsaD, a tRNA modifying enzyme observed in both KAN, PEN, and VNC adapted backgrounds.
 
 A recurrent mutation at coordinate 713637 affecting ABC806_RS03775 (annotated as UDP-N-acetylmuramoyl-L-alanyl-D-glutamate–L-lysine ligase, a MurE homolog) appears independently in CIP, PEN, and KAN adapted strains. MurE catalyzes an essential step in peptidoglycan precursor synthesis, and its repeated targeting across distinct antibiotics suggests a convergent adaptive adjustment of cell wall biosynthetic flux under heterogeneous antibiotic stress.     
+    
+    
+Below are plots of alternative allele frequency in each population - these plots show a nice distinction between mutations that appear only in one replicate vs in all 3 replicates and are more likely to be true adaptive mutations.     
+![RNA-CIP-mutations](demos/data/figures/KAN_mutations_RNAseq.png)    
+![RNA-KAN-mutations](demos/data/figures/CIP_mutations_RNAseq.png)    
+![RNA-PEN-mutations](demos/data/figures/PEN_mutations_RNAseq.png)    
+![RNA-RIF-mutations](demos/data/figures/RIF_mutations_RNAseq.png)   
+![RNA-VNC-mutations](demos/data/figures/VNC_mutations_RNAseq.png)    
+
 
 ## DNA-seq based variant calling
 ### Day 32 of adaptation
