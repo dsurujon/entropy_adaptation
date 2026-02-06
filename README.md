@@ -85,12 +85,17 @@ Additionally, several mutations occur in genes associated with regulation, stres
 A recurrent mutation at coordinate 713637 affecting ABC806_RS03775 (annotated as UDP-N-acetylmuramoyl-L-alanyl-D-glutamate–L-lysine ligase, a MurE homolog) appears independently in CIP, PEN, and KAN adapted strains. MurE catalyzes an essential step in peptidoglycan precursor synthesis, and its repeated targeting across distinct antibiotics suggests a convergent adaptive adjustment of cell wall biosynthetic flux under heterogeneous antibiotic stress.     
 
 ## DNA-seq based variant calling
+### Day 32 of adaptation
 From the annotations, we see that there are 6 mutations across the 4 PEN-adapted populations (murE, cps4E, pbp2x, ABC806_RS00205, ABC806_RS04600 and ABC806_RS04990), all of which overlap with the mutations found in the PEN-adapted clone in the RNA-seq data. There were two additional genic mutations found in the RNAseq data - one was on upp, which only appears in one replicate and at lower frequency (~70%), and the other was filtered out from the DNAseq results because it was present in at least one SDMM population. Below are the alternative allele plots for the DNA and RNA seq results for Penicillin (only genic mutations shown). The nice overlap validates the RNA-seq approach, and demonstrates that the clone used in the RNA-seq experiment was NOT some oddball, low frequency genotype in the population, but rather it was representative of the population. 
 
 ![DNA-PEN-mutations](demos/data/figures/PEN_mutations_DNAseq.png)    
 ![RNA-PEN-mutations](demos/data/figures/PEN_mutations_RNAseq.png)    
+    
 
-
+### Earlier timepoints
+The table `All_pops_merged_with_gene_context.tsv` contains the annotated mutations seen across all 16 populations. There are 4 intergenic and 6 genic mutations. The genic mutations do overlap with the RNA-seq based findings. Note that the tsaD mutation that is present in the RNAseq and DNAseq data has been filtered out because it was present in the SDMM-adapted strains. It shows up in the RNAseq final results, because the wildtype baseline we are using there is pre-adaptation. The tsaD mutation is something TIGR4 gains in culture with or without antibiotics.     
+![DNA-PEN-mutations-alltime](demos/data/figures/PEN_mutations_DNAseq_alltime_bar.png)      
+Note the y-axis. When these mutations appear, they appear at high frequency. The murE mutation in particular appears at Day 7 in all 4 populations at a frequency above 85%, suggesting that this is an early adaptation to antibiotic stress. While we don't have the granular timecourse data for the other antibiotics, it would be interesting to see if it appears early on in the evolution experiments there as well. 
 
 ## Genes with interesting mutations
 #### murE
