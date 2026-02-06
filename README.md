@@ -72,18 +72,12 @@ This is not a complete list. Please see the jupyter notebook for the comprehensi
 Across the adaptive evolution experiments, we observe that mutations in the direct targets of the antibiotics arise as expected, including:
 - gyrA and parC in fluoroquinolone-adapted strains,
 - pbp2X in penicillin-adapted strains,
+- cps4E in penicillin and vancomycin adapted strains,
 - rpoB in rifampicin-adapted strains.
-
-Additionally, several mutations occur in genes associated with regulation, stress response, and central metabolism, such as:
-- cbpD, implicated in competence and fratricide regulation,
-- dltD, involved in modification of teichoic acids,
-- ulaG, linked to carbohydrate catabolism, 
-- cps4E, in capsule synthesis, and
-- tsaD, a tRNA modifying enzyme observed in both KAN, PEN, and VNC adapted backgrounds.
 
 A recurrent mutation at coordinate 713637 affecting ABC806_RS03775 (annotated as UDP-N-acetylmuramoyl-L-alanyl-D-glutamate–L-lysine ligase, a MurE homolog) appears independently in CIP, PEN, and KAN adapted strains. MurE catalyzes an essential step in peptidoglycan precursor synthesis, and its repeated targeting across distinct antibiotics suggests a convergent adaptive adjustment of cell wall biosynthetic flux under heterogeneous antibiotic stress.     
     
-    
+
 Below are plots of alternative allele frequency in each population - these plots show a nice distinction between mutations that appear only in one replicate vs in all 3 replicates and are more likely to be true adaptive mutations.     
 ![RNA-CIP-mutations](demos/data/figures/KAN_mutations_RNAseq.png)    
 ![RNA-KAN-mutations](demos/data/figures/CIP_mutations_RNAseq.png)    
@@ -128,11 +122,7 @@ Adaptation relevance: Mutations in ribosomal proteins can modulate aminoglycosid
 
 #### tsaD
 Function: Member of the t⁶A tRNA modification pathway, required for synthesis of N⁶-threonylcarbamoyladenosine on ANN-recognizing tRNAs.
-Adaptation relevance: Disruption of t⁶A modification alters decoding and can confer growth and stress phenotypes linked to antibiotic responses 
-
-#### upp
-Function: Uracil phosphoribosyltransferase in pyrimidine salvage.
-Adaptation relevance: Salvage pathway genes show up in diverse adaptation contexts, possibly reflecting nucleotide pool rebalancing under growth stress 
+Adaptation relevance: Likely not relevant to antibiotics, as it is seen in the SDMM adapted TIGR4 strain in the DNAseq data as well. 
 
 #### cps4E
 Function: Capsule biosynthesis enzyme in serotype-specific capsular operons.
@@ -142,17 +132,9 @@ Adaptation relevance: Capsule alterations can affect cell surface properties and
 Function: Penicillin-binding protein 2X, one of the primary transpeptidases targeted by β-lactams.
 Adaptation relevance: Mutations here reduce β-lactam binding and are a well-established mechanism of penicillin resistance in pneumococci 
 
-#### cbpD
-Function: Choline-binding protein D, a murein hydrolase that participates in competence-associated fratricide.
-Adaptation relevance: Mutations may alter competence dynamics and surface remodeling, potentially affecting survival under chronic stress 
-
 #### dltD
 Function: Part of the DltABCD system that adds D-alanine to teichoic acids, reducing cell surface negative charge.
 Adaptation relevance: Altered teichoic acid D-alanination changes cell envelope stress tolerance and can modulate susceptibility to stressors 
-
-#### ulaG
-Function: Likely part of ascorbate uptake/metabolism (the ula operon).
-Adaptation relevance: Mutations here may reflect altered metabolic routing under chronic stress rather than direct drug interaction
 
 #### ssrA
 Function: ssrA encodes tmRNA, central to the ribosome rescue system / trans-translation.    
