@@ -63,8 +63,9 @@ Below is a table of annotated, nonsynonymous mutations identified in coding regi
 | 295258  | T   | G   | rpoB |F474C| RIF | direct target   | 
 | 295433  | C   | G   | rpoB |I532M| RIF | direct target   | 
 | 295258  | T   | G   | ssrA |L116L| VNC | transfer mRNA   | 
+| 1154962  | C   | T,A   | ftsW |E39K | VNC | cell wall synthesis   |    
 | 1832036  | G   | A   | cps4E |S106F| VNC | capsule metabolism   | 
-| 2026741  | G   | T,A   | tsaD |A65E, A65V| VNC | tRNA modification   |    
+
 
 Across the adaptive evolution experiments, we observe that mutations in the direct targets of the antibiotics arise as expected, including:
 - gyrA and parC in fluoroquinolone-adapted strain,
@@ -129,5 +130,8 @@ Adaptation relevance: Capsule alterations can affect cell surface properties and
 
 #### pbp2X
 Function: Penicillin-binding protein 2X, one of the primary transpeptidases targeted by β-lactams.
-Adaptation relevance: Mutations here reduce β-lactam binding and are a well-established mechanism of penicillin resistance in pneumococci 
+Adaptation relevance: Mutations here reduce β-lactam binding and are a well-established mechanism of low-level penicillin resistance in pneumococci 
 
+#### ftsW 
+Function: peptidoglycan polymerization during septal cell wall synthesis
+Adaptation relevance: can change peptidoglycan precursor availability and change cell wall components 
