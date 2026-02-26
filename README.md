@@ -66,12 +66,12 @@ Below is a table of annotated, nonsynonymous mutations identified in coding regi
 | 1832036  | G   | A   | cps4E |S106F| VNC | capsule metabolism   | 
 | 2026741  | G   | T,A   | tsaD |A65E, A65V| VNC | tRNA modification   |    
 
-This is not a complete list. Please see the jupyter notebook for the comprehensive list of mutations.     
 Across the adaptive evolution experiments, we observe that mutations in the direct targets of the antibiotics arise as expected, including:
-- gyrA and parC in fluoroquinolone-adapted strains,
-- pbp2X in penicillin-adapted strains,
+- gyrA and parC in fluoroquinolone-adapted strain,
+- pbp2X in the penicillin-adapted strain,
 - cps4E in penicillin and vancomycin adapted strains,
-- rpoB in rifampicin-adapted strains.
+- rplF in the kanamycin adapted strain,
+- rpoB in rifampicin-adapted strain.
 
 A recurrent mutation at coordinate 713637 affecting ABC806_RS03775 (annotated as UDP-N-acetylmuramoyl-L-alanyl-D-glutamate–L-lysine ligase, a MurE homolog) appears independently in CIP, PEN, and KAN adapted strains. MurE catalyzes an essential step in peptidoglycan precursor synthesis, and its repeated targeting across distinct antibiotics suggests a convergent adaptive adjustment of cell wall biosynthetic flux under heterogeneous antibiotic stress.     
     
@@ -81,7 +81,8 @@ Below are plots of alternative allele frequency in each population - these plots
 ![RNA-KAN-mutations](demos/data/figures/CIP_mutations_RNAseq.png)    
 ![RNA-PEN-mutations](demos/data/figures/PEN_mutations_RNAseq.png)    
 ![RNA-RIF-mutations](demos/data/figures/RIF_mutations_RNAseq.png)   
-![RNA-VNC-mutations](demos/data/figures/VNC_mutations_RNAseq.png)    
+![RNA-VNC-mutations](demos/data/figures/VNC_mutations_RNAseq.png)      
+The table above has the single-replicate and low frequency mutations filtered out.     
 
 
 ## DNA-seq based variant calling
@@ -129,13 +130,4 @@ Adaptation relevance: Capsule alterations can affect cell surface properties and
 #### pbp2X
 Function: Penicillin-binding protein 2X, one of the primary transpeptidases targeted by β-lactams.
 Adaptation relevance: Mutations here reduce β-lactam binding and are a well-established mechanism of penicillin resistance in pneumococci 
-
-#### dltD
-Function: Part of the DltABCD system that adds D-alanine to teichoic acids, reducing cell surface negative charge.
-Adaptation relevance: Altered teichoic acid D-alanination changes cell envelope stress tolerance and can modulate susceptibility to stressors 
-
-#### ssrA
-Function: ssrA encodes tmRNA, central to the ribosome rescue system / trans-translation.    
-Interpretation: Adaptive response to stalled ribosomes or translation stress.    
-Mechanistically, this fits with what you saw in other antibiotics: stress on translation or protein homeostasis pathways prompts convergent selection on supporting systems (tRNA modification + ribosome rescue).
 
