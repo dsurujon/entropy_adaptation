@@ -43,25 +43,23 @@ The point of this script is to get annotations for any and all mutations found i
 
 # Results
 ## RNA-Seq based variant calling
-Below is a representative subset of annotated mutations identified in coding regions:
+Below is a table of annotated, nonsynonymous mutations identified in coding regions:
 | position | Ref | Alt   | gene | AA change | ABX | Notes              |
 |----------|-----|-------|------|-----|-----|--------------------|
 | 713637   | C   | A   | murE |A430S| CIP | cell wall synthesis      |
 | 1006733  | C   | A,T   | gyrA |S81Y, S81F | CIP | direct target      |
 | 1355418  | G   | T,A,C | parC |S79Y, S79F, S79C| CIP | direct target      |
 | 54632    | C   | A     | dusB |W122C| KAN |  tRNA processing  |
+| 648148    | T   | C     | ABC806_RS03415 |V75A| KAN |    |
 | 713637   | C   | A   | murE |A430S| KAN | cell wall synthesis      |
 | 1403007  | T   | G     | ciaH |T241P| KAN | antibiotic sensing |
 | 1955003  | C   | T     | rplF |G174D| KAN |   ribosomal protein- target  |
-| 2026741  | G   | T,A   | tsaD |A65E, A65V| KAN | tRNA modification  | 
+| 38578   | C   | A   | ABC806_RS00205 |A586E| PEN |       |
 | 713637   | C   | A   | murE |A430S| PEN | cell wall synthesis      |
-| 1450247  | G   | A     | upp  |P10S| PEN |                    |
+| 876067  | T   | C     |  ABC806_RS04600 |F218L| PEN |                    |
+| 949275  | CT   | C     | ABC806_RS04990  |del - Frameshift| PEN |                    |
 | 1832114  | G   | A     | cps4E|P80L| PEN | capsule metabolism |
 | 1847706  | T   | G     | pbp2X|Y586S| PEN |  direct target   |
-| 2026741  | G   | T,A   | tsaD |A65E, A65V| PEN |  tRNA modification   | 
-| 41080  | G   | A     | cbpD  |G29R| RIF |  competence induced lysis    |
-| 72331  | TC   | T     | dltD|Frameshift| RIF |  cell surface modification |
-| 226057  | T   | G     | ulaG|W155G| RIF | vitamin C transport and metabolism |
 | 295258  | T   | G   | rpoB |F474C| RIF | direct target   | 
 | 295433  | C   | G   | rpoB |I532M| RIF | direct target   | 
 | 295258  | T   | G   | ssrA |L116L| VNC | transfer mRNA   | 
