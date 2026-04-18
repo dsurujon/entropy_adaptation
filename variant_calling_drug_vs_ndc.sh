@@ -3,26 +3,26 @@ cd demos
 
 REF="../refs/GCF_040687945.1_ASM4068794v1_genomic.fna"
 DATA_DIR="./data"
-ALN_DIR="$DATA_DIR/aln/T4C"
-OUT_DIR="./data/vars/T4C/"
+ALN_DIR="$DATA_DIR/aln/T4P"
+OUT_DIR="./data/vars/T4P/"
 mkdir -p $ALN_DIR
 mkdir -p $OUT_DIR
 
-# CIP adapted, NDC
-fasterq-dump SRR9059534 -O ./data/
-fasterq-dump SRR9059533 -O ./data/
-fasterq-dump SRR9059528 -O ./data/
-bwa mem $REF $DATA_DIR/SRR9059534.fastq -o $ALN_DIR/T4C-NDC120min-A.sam -t 10
-bwa mem $REF $DATA_DIR/SRR9059533.fastq -o $ALN_DIR/T4C-NDC120min-B.sam -t 10
-bwa mem $REF $DATA_DIR/SRR9059528.fastq -o $ALN_DIR/T4C-NDC120min-C.sam -t 10
+# PEN adapted, NDC
+fasterq-dump SRR9060352 -O ./data/
+fasterq-dump SRR9060353 -O ./data/
+fasterq-dump SRR9059886 -O ./data/
+bwa mem $REF $DATA_DIR/SRR9060352.fastq -o $ALN_DIR/T4P-NDC90min-A.sam -t 10
+bwa mem $REF $DATA_DIR/SRR9060353.fastq -o $ALN_DIR/T4P-NDC90min-B.sam -t 10
+bwa mem $REF $DATA_DIR/SRR9059886.fastq -o $ALN_DIR/T4P-NDC90min-C.sam -t 10
 
-# CIP adapted, CIP
-fasterq-dump SRR9059524 -O ./data/
-fasterq-dump SRR9059523 -O ./data/
-fasterq-dump SRR9059352 -O ./data/
-bwa mem $REF $DATA_DIR/SRR9059524.fastq -o $ALN_DIR/T4C-CIP120min-A.sam -t 10
-bwa mem $REF $DATA_DIR/SRR9059523.fastq -o $ALN_DIR/T4C-CIP120min-B.sam -t 10
-bwa mem $REF $DATA_DIR/SRR9059352.fastq -o $ALN_DIR/T4C-CIP120min-C.sam -t 10
+# PEN adapted, PEN
+fasterq-dump SRR9060160 -O ./data/
+fasterq-dump SRR9060363 -O ./data/
+fasterq-dump SRR9060362 -O ./data/
+bwa mem $REF $DATA_DIR/SRR9060160.fastq -o $ALN_DIR/T4P-PEN90min-A.sam -t 10
+bwa mem $REF $DATA_DIR/SRR9060363.fastq -o $ALN_DIR/T4P-PEN90min-B.sam -t 10
+bwa mem $REF $DATA_DIR/SRR9060362.fastq -o $ALN_DIR/T4P-PEN90min-C.sam -t 10
 
 echo "aligned all reads to reference, now converting SAM to sorted BAM"
 
@@ -45,15 +45,15 @@ echo "converted all SAM to sorted BAM"
 # Define samples 
 # -----------------------------
 
-CIP_SAMPLES=(
-  "T4C-CIP120min-A"
-  "T4C-CIP120min-B"
-  "T4C-CIP120min-C"
+PEN_SAMPLES=(
+  "T4P-PEN90min-A"
+  "T4P-PEN90min-B"
+  "T4P-PEN90min-C"
 )
 NDC_SAMPLES=(
-  "T4C-NDC120min-A"
-  "T4C-NDC120min-B"
-  "T4C-NDC120min-C"
+  "T4P-NDC90min-A"
+  "T4P-NDC90min-B"
+  "T4P-NDC90min-C"
 )
 
 # -----------------------------
@@ -103,53 +103,53 @@ for S in "${NDC_SAMPLES[@]}"; do
   NDC_VCFS+=("${OUT_DIR}/${S}_calls.filtered.vcf.gz")
 done
 
-CIP_VCFS=()
-for S in "${CIP_SAMPLES[@]}"; do
+PEN_VCFS=()
+for S in "${PEN_SAMPLES[@]}"; do
   call_variants "$S"
-  CIP_VCFS+=("${OUT_DIR}/${S}_calls.filtered.vcf.gz")
+  PEN_VCFS+=("${OUT_DIR}/${S}_calls.filtered.vcf.gz")
 done
 
 
 
 bcftools merge "${NDC_VCFS[@]}" -Ov -o "${OUT_DIR}/NDC_merged.vcf"
-bcftools merge "${CIP_VCFS[@]}" -Ov -o "${OUT_DIR}/CIP_merged.vcf"
+bcftools merge "${PEN_VCFS[@]}" -Ov -o "${OUT_DIR}/PEN_merged.vcf"
 
 bgzip -f "${OUT_DIR}/NDC_merged.vcf"
-bgzip -f "${OUT_DIR}/CIP_merged.vcf"
+bgzip -f "${OUT_DIR}/PEN_merged.vcf"
 bcftools index -f "${OUT_DIR}/NDC_merged.vcf.gz"
-bcftools index -f "${OUT_DIR}/CIP_merged.vcf.gz"
+bcftools index -f "${OUT_DIR}/PEN_merged.vcf.gz"
 
 
 # -----------------------------
-# Subtract NDC from CIP
+# Subtract NDC from PEN
 # -----------------------------
 
 bcftools isec \
   -C \
-  "${OUT_DIR}/CIP_merged.vcf.gz" \
+  "${OUT_DIR}/PEN_merged.vcf.gz" \
   "${OUT_DIR}/NDC_merged.vcf.gz" \
-  -p "${OUT_DIR}/CIP_unique"
+  -p "${OUT_DIR}/PEN_unique"
 
 echo "Done. Final variants:"
-echo "${OUT_DIR}/CIP_unique/0000.vcf"
+echo "${OUT_DIR}/PEN_unique/0000.vcf"
 
 
 # -----------------------------
 # Annotate  variants
 # -----------------------------
 
-REF="refs/GCF_040687945.1_ASM4068794v1_genomic.gff"
-REF_GENES="refs/GCF_040687945.1_ASM4068794v1_genes.gff"
+REF="../refs/GCF_040687945.1_ASM4068794v1_genomic.gff"
+REF_GENES="../refs/GCF_040687945.1_ASM4068794v1_genes.gff"
 
 # vcf -> bed convert
 bcftools query \
   -f '%CHROM\t%POS0\t%POS\t%REF\t%ALT\n' \
-  ${OUT_DIR}/CIP_unique/0000.vcf > ${OUT_DIR}/CIP_unique/0000.bed
+  ${OUT_DIR}/PEN_unique/0000.vcf > ${OUT_DIR}/PEN_unique/0000.bed
 # intersect with annotations
 bedtools intersect \
-  -a ${OUT_DIR}/CIP_unique/0000.bed \
+  -a ${OUT_DIR}/PEN_unique/0000.bed \
   -b ${REF_GENES} \
-  -wa -wb > ${OUT_DIR}/CIP_unique/0000_with_gene_context.tsv
+  -wa -wb > ${OUT_DIR}/PEN_unique/0000_with_gene_context.tsv
 
 rm $DATA_DIR/*.fastq
 rm $ALN_DIR -r
